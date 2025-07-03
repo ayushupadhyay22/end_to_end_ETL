@@ -12,3 +12,4 @@ venv/
 airflow.db
 airflow-webserver.pid
 logs/
+.DS_Store
