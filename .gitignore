@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.env
+data/*
+!data/.gitkeep
+config/config.yaml
+airflow_auth.txt
+# Virtual environments
+venv/
+.venv/
+# Airflow
+airflow.db
+airflow-webserver.pid
+logs/
