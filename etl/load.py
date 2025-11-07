@@ -1,11 +1,8 @@
-#def load_to_postgres(df, config):
-#    db_url = get_db_url(config)
-#    table_name = config['postgres']['table']
-#    logging.info(f"Loading data to {table_name} in PostgreSQL")
-#    engine = create_engine(db_url)
-#    df.to_sql(table_name, engine, if_exists='replace', index=False)
-#    logging.info("Table created successfully")
 from sqlalchemy import create_engine
+import logging
+import pandas as pd
+import psycopg2
+from psycopg2.extras import execute_values
 import logging
 
 def get_db_url(config):
@@ -13,18 +10,7 @@ def get_db_url(config):
     Constructs the database URL for SQLAlchemy.
     """
     pg = config['postgres']
-    #return f"postgresql+psycopg2://{pg['user']}:{pg['password']}@{pg['host']}:{pg['port']}/{pg['dbname']}"
     return f"postgresql+psycopg2://{pg['user']}@{pg['host']}:{pg['port']}/{pg['dbname']}"
-
-import pandas as pd
-import psycopg2
-from psycopg2.extras import execute_values
-import logging
-
-import pandas as pd
-import psycopg2
-from psycopg2.extras import execute_values
-import logging
 
 def load_to_postgres(df, config):
     """
